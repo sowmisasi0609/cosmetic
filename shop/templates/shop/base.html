@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Cosmetics{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'shop/css/style.css' %}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a class="brand" href="{% url 'products_list' %}">Beauty Store</a>
+            <ul class="nav-links">
+                <li><a href="{% url 'products_list' %}">Products</a></li>
+                <li><a href="https://google.com" target="_blank">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+<footer class="footer">
+    <div class="container">© 2025 Beauty Store</div>
+</footer>
+
+</body>
+
+</html>

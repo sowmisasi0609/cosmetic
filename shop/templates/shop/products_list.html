@@ -1,0 +1,35 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block title %}Products - Beauty Store{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Our Products</h1>
+
+<div class="grid">
+    {% for p in products %}
+    <div class="card">
+
+        <a href="{% url 'product_detail' slug=p.slug %}">
+            <div class="thumb">
+                {% if p.image %}
+                <img src="{{ p.image.url }}" alt="{{ p.name }}">
+                {% else %}
+                <img src="{% static 'shop/placeholder.png' %}" alt="No image">
+                {% endif %}
+            </div>
+
+            <div class="card-body">
+                <h3 class="product-name">{{ p.name }}</h3>
+                <div class="product-price">₹ {{ p.price }}</div>
+
+            </div>
+        </a>
+
+    </div>
+    {% empty %}
+    <p>No products yet.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

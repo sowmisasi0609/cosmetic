@@ -1,0 +1,25 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }} - Beauty Store{% endblock %}
+
+{% block content %}
+<div class="detail">
+    <div class="detail-image">
+        {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% else %}
+        <img src="{% static 'shop/placeholder.png' %}" alt="No image">
+        {% endif %}
+    </div>
+
+    <div class="detail-body">
+        <h1>{{ product.name }}</h1>
+        <div class="price-lg">₹ {{ product.price }}</div>
+
+        <p class="desc">{{ product.description|linebreaks }}</p>
+
+        <a href="{% url 'products_list' %}" class="btn-secondary">← Back to Products</a>
+    </div>
+</div>
+{% endblock %}
